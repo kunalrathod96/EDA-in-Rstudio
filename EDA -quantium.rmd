@@ -78,13 +78,13 @@ boxplot(transactionData$PROD_QTY)
 
 ```{r }
 #### Filter the dataset to find the outlier
-# Over to you! Use a filter to examine the transactions in question.
+#Use a filter to examine the transactions in question.
 transactionData_filtered <- transactionData[transactionData$PROD_QTY == 200, ]
 ```
 
 ```{r}
 #### Let's see if the customer has had other transactions
-# Over to you! Use a filter to see what other transactions that customer made.
+#Use a filter to see what other transactions that customer made.
 transactionData_filtered
 
 transactionData_filtered1 <- transactionData[transactionData$LYLTY_CARD_NBR == 226000, ]
@@ -101,7 +101,7 @@ str(transactionData)
 
 ```{r}
 #### Count the number of transactions by date
-# Over to you! Create a summary of transaction count by date.
+#Create a summary of transaction count by date.
 # Convert date column to a Date object
 transactionData$DATE <- as.Date(transactionData$DATE, format = "%Y-%m-%d")
 
@@ -262,28 +262,13 @@ if (nrow(unmatched_transactions) == 0) {
 ```
 Great, there are no nulls! So all our customers in the transaction data has been
 accounted for in the customer dataset.
-Note that if you are continuing with Task 2, you may want to retain this dataset
-which you can write out as a csv
+
 ```{r Code to save dataset as a csv}
 fwrite(data, paste0(filePath,"QVI_data.csv"))
 ```
 Data exploration is now complete!
 ## Data analysis on customer segments
-Now that the data is ready for analysis, we can define some metrics of interest to
-the client:
-- Who spends the most on chips (total sales), describing customers by lifestage and
-how premium their general purchasing behaviour is
-- How many customers are in each segment
-- How many chips are bought per customer by segment
-- What's the average chip price by customer segment
-We could also ask our data team for more information. Examples are:
-- The customer's total spend over the period and total spend for each transaction
-to understand what proportion of their grocery spend is on chips
-- Proportion of customers in each customer segment overall to compare against the
-mix of customers who purchase chips
-Let's start with calculating total sales by LIFESTAGE and PREMIUM_CUSTOMER and
-plotting the split by these segments to describe which customer segment contribute
-most to chip sales.
+
 ```{r fig.width = 10, fig.align = "center"}
 #### Total sales by LIFESTAGE and PREMIUM_CUSTOMER
 #Calculating the summary of sales by those dimensions and create a plot.
